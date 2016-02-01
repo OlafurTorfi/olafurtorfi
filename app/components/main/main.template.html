@@ -1,0 +1,31 @@
+<div class="body">
+  <div id="clouds">
+    <div class="cloud x1"></div>
+    <!-- Time for multiple clouds to dance around -->
+    <div class="cloud x2"></div>
+    <div class="cloud x3"></div>
+    <div class="cloud x4"></div>
+    <div class="cloud x5"></div>
+  <div>
+  <div class="main-panel">
+    <div class="pure-menu navbar" (click)="toggleMenu()">
+      <a [routerLink]="['About']" class="pure-menu-heading pure-menu-link">Ólafur Torfi Yngvason</a>
+      <a class="octicon octicon-three-bars pure-menu-heading pure-menu-link" id="menu-switch"></a>
+      <ul class="pure-menu-list nav-buttons" [class.hide-on-mobile]="hideMenuOnMobile">
+        <li class="pure-menu-item">
+          <a [routerLink]="['Writing']" class="pure-menu-link">{{'Skrif'|translate:language}}</a>
+        </li>
+        <li class="pure-menu-item">
+          <a [routerLink]="['Playground']" class="pure-menu-link">{{'Leikvöllur'|translate:language}}</a>
+        </li>
+        <li class="pure-menu-item">
+          <a [routerLink]="['Frisbski']" class="pure-menu-link">Frisbski</a>
+        </li>
+        <li class="pure-menu-item" (click)="toggleLanguage()">
+          <img [src]="languageFlagUrl" class="language"/>
+        </li>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

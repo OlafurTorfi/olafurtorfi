@@ -1,0 +1,125 @@
+<div class="frisbski-menu">
+  <div class="cloud frisbski-menu-item" [ngClass]="{selected:selected==='About'}" (click)="select('About')">
+    <a class="frisbski-item-label">{{'Um Frisbski'|translate:language}}</a>
+  </div>
+  <div class="cloud frisbski-menu-item" [ngClass]="{selected:selected==='Rules'}" (click)="select('Rules')">
+    <a class="frisbski-item-label">{{'Reglur'|translate:language}}</a>
+  </div>
+  <div class="cloud frisbski-menu-item" [ngClass]="{selected:(selected==='Events')}" (click)="select('Events')">
+    <a class="frisbski-item-label">{{'Viðburðir'|translate:language}}</a>
+  </div>
+</div>
+<div [ngSwitch]='selected' >
+  <div *ngSwitchWhen="'About'">
+    <div *ngIf='language === "english"'>
+      <div class="section">
+        <div class="section-header">
+          Frisbski
+        </div>
+        <div class="section-body">
+          Frisbski is an alpine skiing and frisbee discipline, involving throwing and catching a frisbee while skiing down slopes.
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          History
+        </div>
+        <div class="section-body">
+          <p>In 2012 Einar Beinteinn Árnason and Ólafur Torfi Yngvason started playing with a frisbee while on a skitrip to Hlíðarfjall Akureyri.</p>
+          <p>In early 2015 the Frisbski website was launched.</p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          Goals
+        </div>
+        <div class="section-body">
+          <p>To spread knowledge about Frisbski</p>
+          <p>To make the official frisbski disk allowed in as many skislopes as possible (or prevent it from being banned)</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf='language !== "english"'>
+      <div class="section">
+        <div class="section-header">
+          Frisbski
+        </div>
+        <div class="section-body">
+          Frisbski er skíða og frisbí íþrótt sem felur í sér að kasta og grípa frisbí disk á meðan skíðað er niður troðna skíðabrekku.
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          Saga
+        </div>
+        <div class="section-body">
+          <p>Árið 2012 byrjuðu Einar Beinteinn Árnason og Ólafur Torfi Yngvason að henda á milli sín frisbí diski í skíðaferð að Hlíðarfjalli Akureyri</p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          Markmið
+        </div>
+        <div class="section-body">
+            <p>Að dreifa gleðiboðskapnum um skemmtanagildi Frisbski íþróttarinnar</p>
+            <p>Að fá viðurkennda frisbídisk frisbski íþróttarinnar leyfðan í sem flestum skíðabrekkum (eða koma í veg fyrir að hann verði bannaður)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchWhen="'Rules'">
+    <div *ngIf='language === "english"'>
+      <div class="section">
+        <div class="section-header">
+          General
+        </div>
+        <div class="section-body">
+          A pair of players take turns throwing and catching the frisbee in a designated skislope. They collect points based on the distance of their throws. The pair with the most points wins.
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          Points
+        </div>
+        <div class="section-body">
+          1 point is given for each meter of distance in 3 dimensional space. From the point where the disk is thrown to where it is cought. As long as both points are within the designated skislope.
+        </div>
+      </div>
+    </div>
+    <div *ngIf='language !== "english"'>
+      <div class="section">
+        <div class="section-header">
+          Megindrættir
+        </div>
+        <div class="section-body">
+          Tveir leikmenn skiptast á að kasta og grípa frisbídisk í ákveðinni brekku. Þeir safna stigum byggt á lengd hvers kasts. Það leikmannapar sem endar með flest stig að lokinni brekku, vinnur.
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">
+          Stig
+        </div>
+        <div class="section-body">
+          1 stig er gefið fyrir hvern meter í þrívíðu rúmi. Frá því að disknum er slepp, þar til að hann er gripinn. Svo lengi sem báðir punktar eru innan ákveðinnar brekku.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchWhen="'Events'">
+    <div class='event-main' *ngIf='event'>
+      <div class='arrow-pager' (click)='previousEvent()'>
+        	<span class='mega-octicon really-more-mega octicon-arrow-left center-arrow'></span>
+      </div>
+      <div class="event-body">
+        <h1 class="event-header">{{language==='english'?event.name:event.nafn}}</h1>
+        <iframe class="event-video" [src]='event.url' frameborder="0" allowfullscreen></iframe>
+        <p class="event-description">
+          {{language==='english'?event.english:event.islenska}}
+        </p>
+      </div>
+      <div class='arrow-pager' (click)='nextEvent()'>
+        	<span class='mega-octicon really-more-mega octicon-arrow-right center-arrow'></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.playground-menu{
+  margin-top: 6em;
+  text-align: center;
+  display:flex;
+  justify-content: space-around;
+}
+.playground-item-label{
+  z-index:4;
+  position:relative;
+  line-height: 2em;
+  font-weight: bold;
+  font-size: 1.4em;
+  color: #55a;
+}
+.selected {
+  transform:scale(1.7);
+  margin-top:2em;
+}
+.playground-menu-item:hover {
+  transform:scale(1.4);
+  cursor:pointer;
+}
+@media screen and (max-width: 1000px) {
+  .playground-menu-item{
+    transform : scale(0.7)
+  }
+  .selected {
+    transform:scale(0.9);
+    margin-top:2em;
+  }
+  .playground-menu-item:hover {
+    transform:scale(1.2);
+    cursor:pointer;
+  }
+}
+@media screen and (max-width: 540px) {
+  .playground-menu-item{
+    transform : scale(0.4)
+  }
+  .selected {
+    transform:scale(0.7);
+    margin-top:2em;
+  }
+  .playground-menu-item:hover {
+    transform:scale(0.5);
+    cursor:pointer;
+  }
+}

@@ -1,0 +1,44 @@
+.easter-egg:hover {
+  cursor:pointer;
+}
+.section {
+  padding:2em;
+  position:relative;
+  z-index:4;
+}
+.section-header {
+  background: white;
+  border-radius: 2em;
+  display: inline-block;
+  padding: 1em;
+  font-weight: bold;
+  font-size: 1.4em;
+  color: #55a;
+  position:relative;
+  z-index:4;
+}
+/*.section-header:before {
+  width:5em;
+  background-color: white;
+  border-radius:3em;
+  height:5em;
+  top:.5em;
+  left:2.7em;
+  content:'';
+  position:absolute;
+  z-index: ö59;
+}*/
+.section-body {
+  background: white;
+  color: #55a;
+  padding:1.5em;
+  margin: -.8em 0 0 1em;
+  border-radius:2em;
+  z-index:4;
+}
+@media screen and (min-width: 1000px) {
+  .section{
+    width:900px;
+    margin:0 auto;
+  }
+}

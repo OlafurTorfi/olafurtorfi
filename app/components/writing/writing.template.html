@@ -1,0 +1,18 @@
+<div class='section' *ngFor="#blog of blogs">
+  <div *ngIf="language==='english'">
+    <div class='section-header'>
+      {{blog.name}}
+    </div>
+    <div class='section-body'>
+      {{blog.english}}
+    </div>
+  </div>
+  <div *ngIf="language!=='english'">
+    <div class='section-header'>
+      {{blog.nafn}}
+    </div>
+    <div class='section-body'>
+      {{blog.islenska}}
+    </div>
+  </div>
+</div>

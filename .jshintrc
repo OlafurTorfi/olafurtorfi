@@ -1,0 +1,8 @@
+{
+  "esnext":true,
+  "globals": {
+    "describe":false,
+    "it":false,
+    "require":true
+  }
+}

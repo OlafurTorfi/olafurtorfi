@@ -1,0 +1,14 @@
+<div class="section">
+  <div *ngIf="language==='english'" class="section-header">
+    Hi, my name is Óli
+  </div>
+  <div *ngIf="language!=='english'" class="section-header">
+    Hæ, ég heiti Torfi
+  </div>
+  <div *ngIf="language==='english'" class="section-body">
+    I am a <span class="easter-egg" (click)="toggleAgeType()">{{age}} {{ageType | translate:language}}</span> old software developer, and this is my little home on the web. It is a hobby project where I collect programming experiments, political/philosophicals musings or photos to share with loved ones.
+  </div>
+  <div *ngIf="language!=='english'" class="section-body">
+    Ég er <span class="easter-egg" (click)="toggleAgeType()">{{age}} {{ageType | translate:language}}</span> gammall forritari, og þetta er litla heimili mitt á vefnum. Þetta er gæluverkefni þar sem ég hafði hugsað mér að safna forritunar tilraunum, rövli um pólitík/heimspeki og myndum til að deila með ástvinum.
+  </div>
+</div>
