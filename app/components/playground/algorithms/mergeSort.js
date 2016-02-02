@@ -1,8 +1,9 @@
 (function() {
 	'use strict';
   const _ = require('underscore');
-	module.exports = {
-		sort: array => {
+	const mergeSort = {
+		sort: inputArray => {
+			let array = inputArray.slice();
 			const splitFunc = inputArray =>
 				inputArray.length === 1 ?
 				inputArray :
@@ -20,7 +21,12 @@
 				}
 			};
 			return splitFunc(array);
+		},
+		sortAsync: inputArray => {
+			return new Promise(resolve=>{
+				resolve(mergeSort.sort(inputArray));
+			});
 		}
 	};
-
+	module.exports = mergeSort;
 }());

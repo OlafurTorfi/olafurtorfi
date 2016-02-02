@@ -18,7 +18,30 @@ var PlaygroundComponent = (function () {
         var _this = this;
         _broadcaster.subscribe(function (languageEvent) { return _this.language = languageEvent; });
         this.selected = 'Algorithms';
+        this.arrayLength = 10;
+        this.generatedArray = [];
+        this.sortedArray = [];
     }
+    PlaygroundComponent.prototype.generateArray = function () {
+        this.sortedArray = [];
+        this.generatedArray = arrayHelper.makeRandomizedArray(this.arrayLength);
+        if (this.generatedArray.length >= 5000) {
+            console.log('Generated array: ', this.generatedArray);
+        }
+    };
+    ;
+    PlaygroundComponent.prototype.mergeSort = function () {
+        var _this = this;
+        var tempDate = new Date();
+        mergeSort.sortAsync(this.generatedArray).then(function (result) {
+            _this.sortedArray = result;
+            _this.duration = new Date().getTime() - tempDate.getTime();
+            if (result.length >= 5000) {
+                console.log('Sorted array: ', result);
+            }
+        });
+    };
+    ;
     PlaygroundComponent.prototype.select = function (item) {
         console.log('item was ', item);
         this.selected = item;
@@ -26,7 +49,6 @@ var PlaygroundComponent = (function () {
     ;
     ;
     PlaygroundComponent.prototype.ngOnInit = function () {
-        console.log(JSON.stringify(mergeSort.sort(arrayHelper.makeRandomizedArray(10))));
         console.log('playground component loaded');
     };
     ;

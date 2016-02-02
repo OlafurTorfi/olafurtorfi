@@ -18,6 +18,27 @@ const arrayHelper = require('./algorithms/arrayHelper');
 export class PlaygroundComponent implements OnInit {
   public language: String;
   public selected: String;
+  public generatedArray: Number[];
+  public sortedArray: Number[];
+  public arrayLength: Number;
+  public duration: Number;
+  generateArray(){
+    this.sortedArray = [];
+    this.generatedArray = arrayHelper.makeRandomizedArray(this.arrayLength);
+    if(this.generatedArray.length >= 5000){
+      console.log('Generated array: ', this.generatedArray);
+    }
+  };
+  mergeSort(){
+    let tempDate = new Date();
+    mergeSort.sortAsync(this.generatedArray).then(result=>{
+      this.sortedArray = result
+      this.duration = new Date().getTime() - tempDate.getTime();
+      if(result.length >= 5000){
+        console.log('Sorted array: ', result)
+      }
+    });
+  };
   select(item) {
     console.log('item was ', item);
     this.selected = item;
@@ -25,9 +46,11 @@ export class PlaygroundComponent implements OnInit {
   constructor(_broadcaster: Broadcaster) {
     _broadcaster.subscribe(languageEvent => this.language = languageEvent);
     this.selected = 'Algorithms';
+    this.arrayLength = 10;
+    this.generatedArray = [];
+    this.sortedArray = [];
   };
   ngOnInit() {
-    console.log(JSON.stringify(mergeSort.sort(arrayHelper.makeRandomizedArray(10))));
     console.log('playground component loaded');
   };
 }

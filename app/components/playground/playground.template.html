@@ -5,14 +5,32 @@
 </div>
 <div [ngSwitch]='selected' >
   <div *ngSwitchWhen="'Algorithms'">
-    <h1>playground</h1>
-    <p>playground is an alpin skiing and frisbee discipline, involving throwing and catching a frisbee while skiing down slopes.</p>
-    <p>This website is the official website for information and promotion of the sport.</p>
-    <h1>History</h1>
-    <p>In 2012 Einar Beinteinn Árnason and Ólafur Torfi Yngvason started playing with a frisbee while on a skitrip to Hlíðarfjall Akureyri.</p>
-    <p>In early 2015 the playground website was launched.</p>
-    <h1>Goals</h1>
-    <p>To spread knowledge about playground</p>
-    <p>To make the official playground disk allowed in as many skislopes as possible (or prevent it from being banned</p>
+    <h1>Array Generator</h1>
+    <form (ngSubmit)="generateArray()">
+      <label for="arraySize">Array Size:</label>
+      <input type="number" class="form-control"
+        [(ngModel)]="arrayLength"
+        (ngModelChange)="arrayLength = $event"
+        placeholder="size of array" #name="ngForm"
+        ngControl="arrayLength" required>
+      <button type="submit" class="cloud-button">Generate Array</button>
+    </form>
+    <h2 *ngIf="generatedArray.length >= 5000">Large arrays are only displayed in the console</h2>
+    <ul *ngIf="generatedArray.length < 5000">
+      <li *ngFor="#element of generatedArray" class="array-element">
+        {{element}}
+      </li>
+    </ul>
+    <div>
+      <h1>Sorting Algorithms</h1>
+      <button class="cloud-button" (click)="mergeSort()">Merge Sort</button>
+      <h2 *ngIf="duration > 0">Sorting this array took {{duration}} milliseconds</h2>
+      <h2 *ngIf="sortedArray.length >= 5000">Large arrays are only displayed in the console</h2>
+      <ul *ngIf="sortedArray.length < 5000">
+        <li *ngFor="#element of sortedArray" class="array-element">
+          {{element}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

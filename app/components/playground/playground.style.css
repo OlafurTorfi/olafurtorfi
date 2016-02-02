@@ -20,6 +20,29 @@
   transform:scale(1.4);
   cursor:pointer;
 }
+.cloud-button {
+  border-radius: 1em;
+  padding:.5em;
+  background-color: white;
+  border: none;
+  margin: .5em 1em;
+}
+.cloud-button:hover {
+  box-shadow: 2px 2px #aaF;
+}
+.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+}
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+.array-element {
+  display: inline-block;
+  margin-right: 2px;
+  padding:2px;
+  background-color: #fff;
+  border-radius: 2px;
+}
 @media screen and (max-width: 1000px) {
   .playground-menu-item{
     transform : scale(0.7)
