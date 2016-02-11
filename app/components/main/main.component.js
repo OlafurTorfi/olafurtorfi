@@ -14,6 +14,7 @@ var about_component_1 = require('../about/about.component');
 var frisbski_component_1 = require('../frisbski/frisbski.component');
 var writing_component_1 = require('../writing/writing.component');
 var playground_component_1 = require('../playground/playground.component');
+var article_component_1 = require('../article/article.component');
 var language_pipe_1 = require('../../pipes/language.pipe');
 var broadcaster_1 = require('../../broadcaster');
 var MainComponent = (function () {
@@ -56,7 +57,8 @@ var MainComponent = (function () {
             { path: '/', name: 'About', component: about_component_1.AboutComponent, useAsDefault: true },
             { path: '/frisbski', name: 'Frisbski', component: frisbski_component_1.FrisbskiComponent },
             { path: '/writing', name: 'Writing', component: writing_component_1.WritingComponent },
-            { path: '/playground', name: 'Playground', component: playground_component_1.PlaygroundComponent }
+            { path: '/playground', name: 'Playground', component: playground_component_1.PlaygroundComponent },
+            { path: '/writing/:id', name: 'Article', component: article_component_1.ArticleComponent }
         ]), 
         __metadata('design:paramtypes', [broadcaster_1.Broadcaster])
     ], MainComponent);

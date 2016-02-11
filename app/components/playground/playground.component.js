@@ -12,6 +12,9 @@ var core_1 = require('angular2/core');
 var broadcaster_1 = require('../../broadcaster');
 var language_pipe_1 = require('../../pipes/language.pipe');
 var mergeSort = require('./algorithms/mergeSort');
+var selectionSort = require('./algorithms/selectionSort');
+var insertionSort = require('./algorithms/insertionSort');
+var shellSort = require('./algorithms/shellSort');
 var arrayHelper = require('./algorithms/arrayHelper');
 var PlaygroundComponent = (function () {
     function PlaygroundComponent(_broadcaster) {
@@ -22,6 +25,19 @@ var PlaygroundComponent = (function () {
         this.generatedArray = [];
         this.sortedArray = [];
     }
+    PlaygroundComponent.prototype.sortingHelper = function (sortFunc) {
+        var _this = this;
+        this.sortedArray = [];
+        var tempDate = new Date();
+        sortFunc.sortAsync(this.generatedArray).then(function (result) {
+            _this.sortedArray = result;
+            _this.duration = new Date().getTime() - tempDate.getTime();
+            if (result.length >= 5000) {
+                console.log('Sorted array: ', result);
+            }
+        });
+    };
+    ;
     PlaygroundComponent.prototype.generateArray = function () {
         this.sortedArray = [];
         this.generatedArray = arrayHelper.makeRandomizedArray(this.arrayLength);
@@ -30,16 +46,27 @@ var PlaygroundComponent = (function () {
         }
     };
     ;
+    PlaygroundComponent.prototype.generateRange = function () {
+        this.sortedArray = [];
+        this.generatedArray = arrayHelper.makeShuffledRangeArray(this.arrayLength);
+        if (this.generatedArray.length >= 5000) {
+            console.log('Generated array: ', this.generatedArray);
+        }
+    };
     PlaygroundComponent.prototype.mergeSort = function () {
-        var _this = this;
-        var tempDate = new Date();
-        mergeSort.sortAsync(this.generatedArray).then(function (result) {
-            _this.sortedArray = result;
-            _this.duration = new Date().getTime() - tempDate.getTime();
-            if (result.length >= 5000) {
-                console.log('Sorted array: ', result);
-            }
-        });
+        this.sortingHelper(mergeSort);
+    };
+    ;
+    PlaygroundComponent.prototype.selectionSort = function () {
+        this.sortingHelper(selectionSort);
+    };
+    ;
+    PlaygroundComponent.prototype.insertionSort = function () {
+        this.sortingHelper(insertionSort);
+    };
+    ;
+    PlaygroundComponent.prototype.shellSort = function () {
+        this.sortingHelper(shellSort);
     };
     ;
     PlaygroundComponent.prototype.select = function (item) {

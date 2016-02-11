@@ -6,6 +6,7 @@ import {AboutComponent} from '../about/about.component';
 import {FrisbskiComponent} from '../frisbski/frisbski.component';
 import {WritingComponent} from '../writing/writing.component';
 import {PlaygroundComponent} from '../playground/playground.component';
+import {ArticleComponent} from '../article/article.component';
 import {LanguagePipe} from '../../pipes/language.pipe';
 import {Broadcaster} from '../../broadcaster';
 
@@ -21,7 +22,8 @@ import {Broadcaster} from '../../broadcaster';
   {path: '/', name: 'About', component: AboutComponent, useAsDefault:true},
   {path: '/frisbski', name: 'Frisbski', component: FrisbskiComponent },
   {path: '/writing', name: 'Writing', component: WritingComponent },
-  {path: '/playground', name: 'Playground', component: PlaygroundComponent }
+  {path: '/playground', name: 'Playground', component: PlaygroundComponent },
+  {path: '/writing/:id', name: 'Article', component: ArticleComponent}
 ])
 export class MainComponent implements OnInit {
   public hideMenuOnMobile;

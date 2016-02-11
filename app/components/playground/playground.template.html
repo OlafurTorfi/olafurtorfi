@@ -6,14 +6,15 @@
 <div [ngSwitch]='selected' >
   <div *ngSwitchWhen="'Algorithms'">
     <h1>Array Generator</h1>
-    <form (ngSubmit)="generateArray()">
+    <form>
       <label for="arraySize">Array Size:</label>
       <input type="number" class="form-control"
         [(ngModel)]="arrayLength"
         (ngModelChange)="arrayLength = $event"
         placeholder="size of array" #name="ngForm"
         ngControl="arrayLength" required>
-      <button type="submit" class="cloud-button">Generate Array</button>
+      <button type="submit" class="cloud-button" (click)="generateArray()">Generate Array</button>
+      <button type="submit" class="cloud-button" (click)="generateRange()">Generate Range</button>
     </form>
     <h2 *ngIf="generatedArray.length >= 5000">Large arrays are only displayed in the console</h2>
     <ul *ngIf="generatedArray.length < 5000">
@@ -24,6 +25,9 @@
     <div>
       <h1>Sorting Algorithms</h1>
       <button class="cloud-button" (click)="mergeSort()">Merge Sort</button>
+      <button class="cloud-button" (click)="selectionSort()">Selection Sort</button>
+      <button class="cloud-button" (click)="insertionSort()">Insertion Sort</button>
+      <button class="cloud-button" (click)="shellSort()">Shell Sort</button>
       <h2 *ngIf="duration > 0">Sorting this array took {{duration}} milliseconds</h2>
       <h2 *ngIf="sortedArray.length >= 5000">Large arrays are only displayed in the console</h2>
       <ul *ngIf="sortedArray.length < 5000">

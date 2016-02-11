@@ -1,0 +1,33 @@
+{
+  "name": "olafurtorfi",
+  "description": "Home of Ólafur Torfi Yngvason on the web",
+  "main": "app/index.html",
+  "authors": [
+    "olafurtorfi@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "olafurtorfi",
+    "olafur",
+    "torfi",
+    "yngvason"
+  ],
+  "homepage": "https://github.com/OlafurTorfi/olafurtorfi",
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tinymce": "~4.3.3",
+    "pure": "purecss#^0.6.0"
+  }
+}

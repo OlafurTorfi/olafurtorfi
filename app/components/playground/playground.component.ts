@@ -6,7 +6,9 @@ import {Broadcaster} from '../../broadcaster';
 import {LanguagePipe} from '../../pipes/language.pipe';
 
 const mergeSort = require('./algorithms/mergeSort');
-
+const selectionSort = require('./algorithms/selectionSort');
+const insertionSort = require('./algorithms/insertionSort');
+const shellSort = require('./algorithms/shellSort');
 const arrayHelper = require('./algorithms/arrayHelper');
 
 @Component({
@@ -22,6 +24,17 @@ export class PlaygroundComponent implements OnInit {
   public sortedArray: Number[];
   public arrayLength: Number;
   public duration: Number;
+  private sortingHelper(sortFunc){
+    this.sortedArray = [];
+    let tempDate = new Date();
+    sortFunc.sortAsync(this.generatedArray).then(result=>{
+      this.sortedArray = result
+      this.duration = new Date().getTime() - tempDate.getTime();
+      if(result.length >= 5000){
+        console.log('Sorted array: ', result)
+      }
+    });
+  };
   generateArray(){
     this.sortedArray = [];
     this.generatedArray = arrayHelper.makeRandomizedArray(this.arrayLength);
@@ -29,15 +42,24 @@ export class PlaygroundComponent implements OnInit {
       console.log('Generated array: ', this.generatedArray);
     }
   };
-  mergeSort(){
-    let tempDate = new Date();
-    mergeSort.sortAsync(this.generatedArray).then(result=>{
-      this.sortedArray = result
-      this.duration = new Date().getTime() - tempDate.getTime();
-      if(result.length >= 5000){
-        console.log('Sorted array: ', result)
+  generateRange(){
+      this.sortedArray = [];
+      this.generatedArray = arrayHelper.makeShuffledRangeArray(this.arrayLength);
+      if(this.generatedArray.length >= 5000){
+        console.log('Generated array: ', this.generatedArray);
       }
-    });
+  }
+  mergeSort(){
+    this.sortingHelper(mergeSort);
+  };
+  selectionSort(){
+    this.sortingHelper(selectionSort);
+  };
+  insertionSort(){
+    this.sortingHelper(insertionSort);
+  };
+  shellSort(){
+    this.sortingHelper(shellSort);
   };
   select(item) {
     console.log('item was ', item);

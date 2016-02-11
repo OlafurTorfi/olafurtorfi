@@ -30,7 +30,8 @@ module.exports = {
       'angular2/http',
       'angular2/platform/browser',
       'angular2/router',
-      'rxjs'
+      'rxjs',
+      'tinymce/tinymce.min'
     ]
   },
 
@@ -42,7 +43,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.ts', '.js'],
-    modulesDirectories: ['node_modules'],
+    modulesDirectories: ['node_modules','bower_components'],
     root: path.resolve('./app')
   },
 
@@ -51,6 +52,7 @@ module.exports = {
       {test: /\.html$/, loader: 'raw'},
       {test: /\.scss$/, include: [path.resolve(__dirname, 'app/components')], loader: 'raw!postcss-loader!sass'},
       {test: /\.scss$/, include: [path.resolve(__dirname, 'app/style')], loader: 'style!css!postcss-loader!sass'},
+      {test: /\.scss$/, include: [path.resolve(__dirname, 'bower_components/pure/src')], loader: 'style!css!postcss-loader!sass'},
       {test: /\.ts$/, exclude: [/\.spec\.ts$/, /node_modules/], loader: 'ts'}
     ],
 

@@ -3,16 +3,16 @@
     <div class='section-header'>
       {{blog.name}}
     </div>
-    <div class='section-body'>
-      {{blog.english}}
+    <div class='section-body' (click)='goToBlog(blog.id)'>
+      {{blog.english|slice:0:500}}...
     </div>
   </div>
   <div *ngIf="language!=='english'">
     <div class='section-header'>
       {{blog.nafn}}
     </div>
-    <div class='section-body'>
-      {{blog.islenska}}
+    <div class='section-body' (click)='goToBlog(blog.id)'>
+      {{blog.islenska|slice:0:500}}...
     </div>
   </div>
 </div>

@@ -1,0 +1,37 @@
+<div class='section' *ngIf='blog'>
+  <div *ngIf="language==='english'">
+    <div class='section-header'>
+      {{blog.name}}
+    </div>
+    <div class='section-body'>
+      {{blog.english}}
+    </div>
+  </div>
+  <div *ngIf="language!=='english'">
+    <div class='section-header'>
+      {{blog.nafn}}
+    </div>
+    <div class='section-body'>
+      {{blog.islenska}}
+    </div>
+  </div>
+</div>
+<div class='comment-section'>
+  <div *ngFor="#comment of comments" class="comment-body">
+    <h3>{{comment.author}}</h3>
+    <p>
+      {{comment.text}}
+    </p>
+  </div>
+  <div class="comment-body">
+    <form method="post">
+      <textarea id="mytextarea">Hello, World!</textarea>
+    </form>
+    <form method="post">
+      <label>Name</label>
+      <input>
+      <label>Comment</label>
+      <textarea id="mytextarea">Hello, World!</textarea>
+    </form>
+  </div>
+</div>
