@@ -25,9 +25,12 @@
     <div>
       <h1>Sorting Algorithms</h1>
       <button class="cloud-button" (click)="mergeSort()">Merge Sort</button>
+      <button class="cloud-button" (click)="mergeSortBottomUp()">Merge Sort Bottom Up</button>
       <button class="cloud-button" (click)="selectionSort()">Selection Sort</button>
       <button class="cloud-button" (click)="insertionSort()">Insertion Sort</button>
       <button class="cloud-button" (click)="shellSort()">Shell Sort</button>
+      <button class="cloud-button" (click)="quickSort()">Quick Sort</button>
+      <button class="cloud-button" (click)="dijkstraQuickSort()" title="Quick sort using dijkstra partitioning algorithm">Dijkstra Quick Sort</button>
       <h2 *ngIf="duration > 0">Sorting this array took {{duration}} milliseconds</h2>
       <h2 *ngIf="sortedArray.length >= 5000">Large arrays are only displayed in the console</h2>
       <ul *ngIf="sortedArray.length < 5000">

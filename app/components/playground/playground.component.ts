@@ -9,6 +9,7 @@ const mergeSort = require('./algorithms/mergeSort');
 const selectionSort = require('./algorithms/selectionSort');
 const insertionSort = require('./algorithms/insertionSort');
 const shellSort = require('./algorithms/shellSort');
+const quickSort = require('./algorithms/quickSort');
 const arrayHelper = require('./algorithms/arrayHelper');
 
 @Component({
@@ -24,43 +25,52 @@ export class PlaygroundComponent implements OnInit {
   public sortedArray: Number[];
   public arrayLength: Number;
   public duration: Number;
-  private sortingHelper(sortFunc){
+  private sortingHelper(sortFunc) {
     this.sortedArray = [];
     let tempDate = new Date();
-    sortFunc.sortAsync(this.generatedArray).then(result=>{
+    sortFunc(this.generatedArray).then(result=> {
       this.sortedArray = result
       this.duration = new Date().getTime() - tempDate.getTime();
-      if(result.length >= 5000){
+      if (result.length >= 5000) {
         console.log('Sorted array: ', result)
       }
     });
   };
-  generateArray(){
+  generateArray() {
     this.sortedArray = [];
     this.generatedArray = arrayHelper.makeRandomizedArray(this.arrayLength);
-    if(this.generatedArray.length >= 5000){
+    if (this.generatedArray.length >= 5000) {
       console.log('Generated array: ', this.generatedArray);
     }
   };
-  generateRange(){
-      this.sortedArray = [];
-      this.generatedArray = arrayHelper.makeShuffledRangeArray(this.arrayLength);
-      if(this.generatedArray.length >= 5000){
-        console.log('Generated array: ', this.generatedArray);
-      }
+  generateRange() {
+    this.sortedArray = [];
+    this.generatedArray = arrayHelper.makeShuffledRangeArray(this.arrayLength);
+    if (this.generatedArray.length >= 5000) {
+      console.log('Generated array: ', this.generatedArray);
+    }
   }
-  mergeSort(){
-    this.sortingHelper(mergeSort);
+  mergeSort() {
+    this.sortingHelper(mergeSort.sortAsync);
   };
-  selectionSort(){
-    this.sortingHelper(selectionSort);
+  mergeSortBottomUp() {
+    this.sortingHelper(mergeSort.sortBottomUpAsync);
   };
-  insertionSort(){
-    this.sortingHelper(insertionSort);
+  selectionSort() {
+    this.sortingHelper(selectionSort.sortAsync);
   };
-  shellSort(){
-    this.sortingHelper(shellSort);
+  insertionSort() {
+    this.sortingHelper(insertionSort.sortAsync);
   };
+  shellSort() {
+    this.sortingHelper(shellSort.sortAsync);
+  };
+  quickSort() {
+    this.sortingHelper(quickSort.sortAsync);
+  };
+  dijkstraQuickSort(){
+    this.sortingHelper(quickSort.dijkstraSortAsync)
+  }
   select(item) {
     console.log('item was ', item);
     this.selected = item;

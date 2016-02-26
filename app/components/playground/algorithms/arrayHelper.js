@@ -17,6 +17,19 @@
         array[random] = item;
       });
       return array;
+    },
+    swap: (array,index1,index2) => {
+      let temp = array[index2];
+      array[index2] = array[index1];
+      array[index1] = temp;
+    },
+    shuffleInPlace: array => {
+      let random;
+      array.forEach((item,index) => {
+        random = Math.floor(Math.random() * (index+1));
+        array[index] = array[random];
+        array[random] = item;
+      });
     }
   };
 }());

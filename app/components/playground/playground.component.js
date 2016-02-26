@@ -15,6 +15,7 @@ var mergeSort = require('./algorithms/mergeSort');
 var selectionSort = require('./algorithms/selectionSort');
 var insertionSort = require('./algorithms/insertionSort');
 var shellSort = require('./algorithms/shellSort');
+var quickSort = require('./algorithms/quickSort');
 var arrayHelper = require('./algorithms/arrayHelper');
 var PlaygroundComponent = (function () {
     function PlaygroundComponent(_broadcaster) {
@@ -29,7 +30,7 @@ var PlaygroundComponent = (function () {
         var _this = this;
         this.sortedArray = [];
         var tempDate = new Date();
-        sortFunc.sortAsync(this.generatedArray).then(function (result) {
+        sortFunc(this.generatedArray).then(function (result) {
             _this.sortedArray = result;
             _this.duration = new Date().getTime() - tempDate.getTime();
             if (result.length >= 5000) {
@@ -54,21 +55,32 @@ var PlaygroundComponent = (function () {
         }
     };
     PlaygroundComponent.prototype.mergeSort = function () {
-        this.sortingHelper(mergeSort);
+        this.sortingHelper(mergeSort.sortAsync);
+    };
+    ;
+    PlaygroundComponent.prototype.mergeSortBottomUp = function () {
+        this.sortingHelper(mergeSort.sortBottomUpAsync);
     };
     ;
     PlaygroundComponent.prototype.selectionSort = function () {
-        this.sortingHelper(selectionSort);
+        this.sortingHelper(selectionSort.sortAsync);
     };
     ;
     PlaygroundComponent.prototype.insertionSort = function () {
-        this.sortingHelper(insertionSort);
+        this.sortingHelper(insertionSort.sortAsync);
     };
     ;
     PlaygroundComponent.prototype.shellSort = function () {
-        this.sortingHelper(shellSort);
+        this.sortingHelper(shellSort.sortAsync);
     };
     ;
+    PlaygroundComponent.prototype.quickSort = function () {
+        this.sortingHelper(quickSort.sortAsync);
+    };
+    ;
+    PlaygroundComponent.prototype.dijkstraQuickSort = function () {
+        this.sortingHelper(quickSort.dijkstraSortAsync);
+    };
     PlaygroundComponent.prototype.select = function (item) {
         console.log('item was ', item);
         this.selected = item;
